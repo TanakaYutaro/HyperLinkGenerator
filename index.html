@@ -2,10 +2,45 @@
 <html>
 <head>
     <title>HyperLinkGenerator</title>
+    <meta name="viewport" content="width=device-width,
+        user-scale=yes, initial-scale=1.0, maximum-scale=5.0"/>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(function () {
+            var urls = [
+                "http://yutarotanaka.com",
+                "http://yutarotanaka.com/blog"
+            ];
+
+            generateHyperLinks("#urlDisplay", urls);
+        });
+
+        function generateHyperLinks(targetId, texts) {
+            var olTag = $('<ol/>');
+            for (var i = 0; i < texts.length; i++) {
+                var liTag = $('<li>');
+                var aTag = $('<a>', {
+                    href: texts[i],
+                    text: texts[i]
+                });
+
+                olTag.append(liTag.html(aTag));
+            }
+            $(targetId).append(olTag);
+        }
+    </script>
+    <style>
+        li {
+            margin-top: 2.0em;
+            margin-bottom: 2.0em;
+        }
+    </style>
 </head>
 <body>
 
 <h1>HyperLinkGenerator</h1>
+<div id="urlDisplay"></div>
 
 </body>
 </html>
